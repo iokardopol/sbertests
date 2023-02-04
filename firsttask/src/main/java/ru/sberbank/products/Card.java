@@ -44,7 +44,7 @@ public class Card extends AbstractProduct implements IWithdrawal, IDeposit {
     @Override
     public void withdrawal(BigDecimal amount) {
         if (amount.compareTo(this.getBalance()) > 0) {
-            log.error("Withdrawal amount exceeds the balance");
+            log.error("Withdrawal amount {} exceeds the current balance {}", amount, this.getBalance());
         } else {
             this.setBalance(this.getBalance().subtract(amount));
         }
