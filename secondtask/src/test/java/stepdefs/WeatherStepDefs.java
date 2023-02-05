@@ -8,12 +8,15 @@ import io.restassured.RestAssured;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.restassured.response.Response;
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.SoftAssertions;
 import ru.sberbank.models.Current;
 import ru.sberbank.models.CurrentInfo;
 import ru.sberbank.models.ErrorInfo;
+import util.ParametersUtil;
 
+import java.util.Base64;
 import java.util.Random;
 
 /**
@@ -37,7 +40,7 @@ public class WeatherStepDefs {
      */
     @Дано("Пользователь с валидным ключом для weatherstack")
     public void setupValidApiKey() {
-        apiKey = "db54481def349ffaae5d19f2c71745d8";
+        apiKey = StringUtils.newStringUtf8(Base64.getDecoder().decode(ParametersUtil.API_KEY));
     }
 
     /**
